@@ -1,3 +1,4 @@
+##imports ##
 import os,sys
 
 
@@ -29,12 +30,10 @@ files=lis.copy()
 class main:
 
  def __init__(self):
-
-  pass
-
+  self.path=os.getcwd()
   
 
- def getext(ext_name):
+ def getext(self,ext_name):
 
   exts=[fil for fil in files if os.path.splitext(fil)[1].lower() in ext_name]
 
@@ -42,7 +41,7 @@ class main:
 
 	
 
- def create_if_not(folder):
+ def create_if_not(self,folder):
 
      if not os.path.exists(folder):
 
@@ -50,11 +49,11 @@ class main:
 
 	
 
- def move(foldername,filee):
+ def move(self,foldername,filee):
 
-      for fi in filee:          
+      for fil in filee:          
 
-          os.replace(fi,f"{cwd}/{foldername}/{fi}")
+          os.replace(fil,f"{cwd}/{foldername}/{fil}")
 
     
 
@@ -94,13 +93,13 @@ print("Getting files extentions")
 
 img_ext=[".jpg",".png",".jpeg"]
 
-docs_ext=[".txt",".doc",".docx"]
+docs_ext=[".txt",".doc",".docx",".csv",".xlsx",".md"]
 
 pdf_ext=[".pdf"]
 
-video_ext=[".mp4",".avi",".mkv"]
+video_ext=[".mp4",".avi",".mkv",".3gp",".mkv"]
 
-audio_ext=[".mp3",".flv"]
+audio_ext=[".mp3",".flv",".mpeg",".ogg",".wav"]
 
 
 
@@ -167,5 +166,5 @@ main.move("python_Others",other)
 print("=========================================")
 
 print("Task Successed")
-
+#running class
 run=main()
