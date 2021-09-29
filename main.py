@@ -1,3 +1,4 @@
+
 import os
 import sys
 
@@ -9,8 +10,8 @@ video=[".mp4",".avi",".mkv",".3gp",".mkv"]
 audio=[".mp3",".flv",".mpeg",".ogg",".wav"]
 
 
-def move(file,to):
-    pass
+def move(from_ ,to):
+    os.replace(from_, to)
 
 def get_extension(file):
     return os.path.splitext(file)[-1]
@@ -43,7 +44,9 @@ for item in items:
 
     for key,value in classification.items():
         if ext in value:
-            move
+            move(os.path.join(path,item),os.path.join(path,key))
+            break
+    move(os.path.join(path,item), os.path.join(path,'Others'))
 
 
 
