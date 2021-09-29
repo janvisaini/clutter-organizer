@@ -21,19 +21,19 @@ def create_dir(directory,dirs):
         if not os.path.exists(os.path.join(directory,dir)):
             os.mkdir(os.path.join(directory,dir))
 
-path = input("Enter the apth to organize: ")
+path = input("Enter the path to organize: ")
 
 if not os.path.exists(path):
     print("Path doesn't exist")
     sys.exit()
 
-items = os.listdir(path)
+items = [x for x in os.listdir(path) if os.path.isfile(os.path.join(path,x))]
 
-create_dir(['Images','Videos','Docs','Audios','Pdfs','Others'])
+create_dir(path,['Images','Videos','Docs','Audios','Pdfs','Others'])
 
 for item in items:
     ext = get_extension(item)
-
+    
     classification = {
         'Images':img,
         'Videos':video,
@@ -44,9 +44,7 @@ for item in items:
 
     for key,value in classification.items():
         if ext in value:
-            move(os.path.join(path,item),os.path.join(path,key))
+            move(os.path.join(path,item),os.path.join(path,f"{key}/{item}"))
             break
-    move(os.path.join(path,item), os.path.join(path,'Others'))
-
 
 
