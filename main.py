@@ -3,10 +3,10 @@ import os
 import sys
 
 # defining extensions
-img=[".jpg",".png",".jpeg"]
+img=[".jpg",".png",".jpeg",".svg",".tiff"]
 docs=[".txt",".doc",".docx",".csv",".xlsx",".md"]
 pdf=[".pdf"]
-video=[".mp4",".avi",".mkv",".3gp",".mkv"]
+video=[".mp4",".avi",".mkv",".3gp",".mkv",".mov",".flv",".f4v"]
 audio=[".mp3",".flv",".mpeg",".ogg",".wav"]
 
 
@@ -46,5 +46,12 @@ for item in items:
         if ext in value:
             move(os.path.join(path,item),os.path.join(path,f"{key}/{item}"))
             break
-
+            
+for item in items:
+    if os.file.exists(os.path.join(path,item)):
+        move(os.path.join(path,item),os.path.join(path,f"Others/{item}"))
+        
+        
+        
+    
 
