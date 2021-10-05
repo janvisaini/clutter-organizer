@@ -1,4 +1,3 @@
-
 import os
 import sys
 
@@ -28,8 +27,9 @@ path = input("Enter the path to organize: ")
 # validation of path
 if not os.path.exists(path):
     print("Path doesn't exist")
-    sys.exit()
+    sys.exit(0)
 
+#get content in the directory and filter it only if it is a file
 items = [x for x in os.listdir(path) if os.path.isfile(os.path.join(path,x))]
 
 create_dir(path,['Images','Videos','Docs','Audios','Pdfs','Others'])
@@ -37,7 +37,7 @@ create_dir(path,['Images','Videos','Docs','Audios','Pdfs','Others'])
 #cleaning of clutter
 for item in items:
     ext = get_extension(item)
-    
+    # maping ext with name
     classification = {
         'Images':img,
         'Videos':video,
@@ -48,9 +48,11 @@ for item in items:
 
     for key,value in classification.items():
         if ext in value:
+            # moving the files             
             move(os.path.join(path,item),os.path.join(path,f"{key}/{item}"))
             break
-            
+        
+# checking any file remaining and moving it to others
 for item in items:
     if os.file.exists(os.path.join(path,item)):
         move(os.path.join(path,item),os.path.join(path,f"Others/{item}"))
